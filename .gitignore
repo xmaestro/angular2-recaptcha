@@ -11,3 +11,6 @@ components/*.js
 
 # misc 
 *.log
+
+#webstorm
+.idea

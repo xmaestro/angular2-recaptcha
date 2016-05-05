@@ -60,5 +60,5 @@ Where **site_key** is the Google reCaptcha private key.
 To catch the success callback, you will need to subscribe to `captchaValidated` event. Llike so:
 
 ```bash
-<captcha (captchaValidated)="handleCorrectCaptcha()" [site_key]="<GOOGLE_RECAPTCHA_KEY>"></captcha>
+<a2reCaptcha (captchaValidated)="handleCorrectCaptcha()" [site_key]="<GOOGLE_RECAPTCHA_KEY>"></a2reCaptcha>
 ```
