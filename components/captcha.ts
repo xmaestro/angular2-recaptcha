@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from 'angular2/core';
+import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
 
 @Component({
     selector: 'a2reCaptcha',
@@ -6,9 +6,9 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
 })
 
 /*Captcha functionality component*/
-export class A2ReCaptcha {
+export class A2ReCaptcha implements OnInit {
 
-    @Input()
+@Input()
     site_key:string = null;
 
     @Output()
@@ -19,6 +19,7 @@ export class A2ReCaptcha {
         window['verifyCallback'] = this.recaptchaCallback.bind(this);
 
         this.captchaValidated = new EventEmitter();
+
         this.captchaValidated.emit(false);
 
     }
@@ -39,6 +40,12 @@ export class A2ReCaptcha {
         script.async = true;
         script.defer = true;
         doc.appendChild(script);
+
+    }
+
+    ngOnInit() {
+
+        this.showCaptcha();
 
     }
 }
