@@ -6,7 +6,7 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
 })
 
 /*Captcha functionality component*/
-export class A2ReCaptcha implements {
+export class A2ReCaptcha {
 
     @Input()
     site_key:string = null;
