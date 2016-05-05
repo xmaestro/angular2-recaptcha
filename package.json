@@ -1,0 +1,26 @@
+{
+  "name": "angular2-recaptcha",
+  "version": "0.0.1",
+  "description": "Angular 2 : Typescript component for Google reCaptcha",
+  "main": "angular2-recaptcha.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xmaestro/angular2-recaptcha.git"
+  },
+  "keywords": [
+    "angular2",
+    "recaptcha"
+  ],
+  "author": "xmaestro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xmaestro/angular2-recaptcha/issues"
+  },
+  "peerDependencies": {
+    "angular2": "2.0.0-beta.17"
+  },
+  "homepage": "https://github.com/xmaestro/angular2-recaptcha#readme"
+}
