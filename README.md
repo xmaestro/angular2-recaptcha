@@ -8,7 +8,7 @@ Installation
 Install it from npm:
 
 ```bash
-npm angular2-recaptcha
+npm install angular2-recaptcha
 ```
 
 Usage
