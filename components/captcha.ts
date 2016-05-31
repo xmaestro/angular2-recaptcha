@@ -1,38 +1,30 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, NgZone} from '@angular/core';
 
 @Component({
-    selector: 'a2reCaptcha',
+    selector: 're-captcha',
     template: '<div class="g-recaptcha" [attr.data-sitekey]="site_key" data-callback="verifyCallback"></div>'
 })
 
 /*Captcha functionality component*/
-export class A2ReCaptcha implements OnInit {
+export class ReCaptchaComponent implements OnInit {
 
-@Input()
+    @Input()
     site_key:string = null;
 
     @Output()
-    captchaValidated:EventEmitter<boolean>;
+    captchaResponse:EventEmitter<string>;
 
-    constructor() {
-
-        window['verifyCallback'] = this.recaptchaCallback.bind(this);
-
-        this.captchaValidated = new EventEmitter();
-
-        this.captchaValidated.emit(false);
-
+    constructor(private _zone: NgZone) {
+        window['verifyCallback'] = (response) => this._zone.run(this.recaptchaCallback.bind(this, response));
+        this.captchaResponse = new EventEmitter<string>();
     }
 
-    recaptchaCallback() {
-
-        this.captchaValidated.emit(true);
-
+    recaptchaCallback(response) {
+        this.captchaResponse.emit(response);
     }
 
     /*Display captcha form/image*/
     showCaptcha() {
-
         var doc = <HTMLDivElement> document.body;
         var script = document.createElement('script');
         script.innerHTML = '';
@@ -40,12 +32,9 @@ export class A2ReCaptcha implements OnInit {
         script.async = true;
         script.defer = true;
         doc.appendChild(script);
-
     }
 
     ngOnInit() {
-
         this.showCaptcha();
-
     }
 }
