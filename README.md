@@ -33,14 +33,14 @@ System.config({
 
 ### Component
 
-```bash
-import {A2ReCaptcha} from 'angular2-recaptcha/angular2-recaptcha';
+```typescript
+import {ReCaptchaComponent} from 'angular2-recaptcha/angular2-recaptcha';
 ```
 
-```bash
+```typescript
  ...
 @Component({
-  directives: [A2ReCaptcha]
+  directives: [ReCaptchaComponent]
   })
   ...
 ```
@@ -49,16 +49,16 @@ import {A2ReCaptcha} from 'angular2-recaptcha/angular2-recaptcha';
 
 Use in template like below
 
-```bash
- <a2reCaptcha [site_key]="<GOOGLE_RECAPTCHA_KEY>"></a2reCaptcha>
+```html
+ <re-captcha [site_key]="'<GOOGLE_RECAPTCHA_KEY>'"></re-captcha>
 ```
 
 Where **site_key** is the Google reCaptcha private key.
 
 ## Callback
 
-To catch the success callback, you will need to subscribe to `captchaValidated` event. Llike so:
+To catch the success callback, you will need to subscribe to `captchaValidated` event. The response token will be passed in the `$event` parameter.
 
-```bash
-<a2reCaptcha (captchaValidated)="handleCorrectCaptcha()" [site_key]="<GOOGLE_RECAPTCHA_KEY>"></a2reCaptcha>
+```html
+<re-captcha (captchaValidated)="handleCorrectCaptcha($event)" [site_key]="'<GOOGLE_RECAPTCHA_KEY>'"></re-captcha>
 ```
