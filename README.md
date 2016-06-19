@@ -14,7 +14,7 @@ npm install angular2-recaptcha
 Usage
 --------------------------------------
 
-### SystemJs config
+### SystemJS config
 
 ```js
 System.config({
@@ -57,8 +57,8 @@ Where **site_key** is the Google reCaptcha private key.
 
 ## Callback
 
-To catch the success callback, you will need to subscribe to `captchaValidated` event. The response token will be passed in the `$event` parameter.
+To catch the success callback, you will need to subscribe to `captchaResponse` event. The response token will be passed in the `$event` parameter.
 
 ```html
-<re-captcha (captchaValidated)="handleCorrectCaptcha($event)" [site_key]="'<GOOGLE_RECAPTCHA_KEY>'"></re-captcha>
+<re-captcha (captchaResponse)="handleCorrectCaptcha($event)" [site_key]="'<GOOGLE_RECAPTCHA_KEY>'"></re-captcha>
 ```
