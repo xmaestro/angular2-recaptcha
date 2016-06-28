@@ -18,17 +18,17 @@ Usage
 
 ```js
 System.config({
-            map: {
-                'angular2-recaptcha': 'node_modules/angular2-recaptcha'
-            },
-            packages: {
-                app: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                },
-                'angular2-recaptcha': {defaultExtension: 'js'}
-            }
-        });
+    map: {
+        'angular2-recaptcha': 'node_modules/angular2-recaptcha'
+    },
+    packages: {
+        app: {
+            format: 'register',
+            defaultExtension: 'js'
+        },
+        'angular2-recaptcha': {defaultExtension: 'js'}
+    }
+});
 ```
 
 ### Component
@@ -53,7 +53,7 @@ Use in template like below
  <re-captcha [site_key]="'<GOOGLE_RECAPTCHA_KEY>'"></re-captcha>
 ```
 
-Where **site_key** is the Google reCaptcha private key.
+Where **site_key** is the Google reCaptcha private key. Optionally you can also override the user interface language by by setting e.g. `[language]="'de'"`.
 
 ## Callback
 
