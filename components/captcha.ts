@@ -11,14 +11,16 @@ import {
     template: '<div class="g-recaptcha" [attr.data-sitekey]="site_key" data-callback="verifyCallback"></div>'
 })
 
-/*Captcha functionality component*/
 export class ReCaptchaComponent implements OnInit {
 
     @Input()
-    site_key:string = null;
+    site_key: string = null;
+    /* Available languages: https://developers.google.com/recaptcha/docs/language */
+    @Input()
+    language: string = null;
 
     @Output()
-    captchaResponse:EventEmitter<string>;
+    captchaResponse: EventEmitter<string>;
 
     constructor(private _zone: NgZone) {
         window['verifyCallback'] = (response: any) => this._zone.run(this.recaptchaCallback.bind(this, response));
@@ -33,7 +35,7 @@ export class ReCaptchaComponent implements OnInit {
         var doc = <HTMLDivElement> document.body;
         var script = document.createElement('script');
         script.innerHTML = '';
-        script.src = 'https://www.google.com/recaptcha/api.js';
+        script.src = 'https://www.google.com/recaptcha/api.js' + (this.language ? '?hl=' + this.language : '');
         script.async = true;
         script.defer = true;
         doc.appendChild(script);
