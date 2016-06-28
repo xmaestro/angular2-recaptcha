@@ -50,15 +50,15 @@ import {ReCaptchaComponent} from 'angular2-recaptcha/angular2-recaptcha';
 Use in template like below
 
 ```html
- <re-captcha [site_key]="'<GOOGLE_RECAPTCHA_KEY>'"></re-captcha>
+ <re-captcha site_key="<GOOGLE_RECAPTCHA_KEY>"></re-captcha>
 ```
 
-Where **site_key** is the Google reCaptcha private key. Optionally you can also override the user interface language by by setting e.g. `[language]="'de'"`.
+Where **site_key** is the Google reCaptcha private key. Optionally you can also override the user interface language by by setting e.g. `language="de"`.
 
 ## Callback
 
 To catch the success callback, you will need to subscribe to `captchaResponse` event. The response token will be passed in the `$event` parameter.
 
 ```html
-<re-captcha (captchaResponse)="handleCorrectCaptcha($event)" [site_key]="'<GOOGLE_RECAPTCHA_KEY>'"></re-captcha>
+<re-captcha (captchaResponse)="handleCorrectCaptcha($event)" site_key="<GOOGLE_RECAPTCHA_KEY>"></re-captcha>
 ```
