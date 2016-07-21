@@ -14,7 +14,10 @@ import {
 export class ReCaptchaComponent implements OnInit {
 
     @Input()
-    site_key:string = null;
+    site_key: string = null;
+    /* Available languages: https://developers.google.com/recaptcha/docs/language */
+    @Input()
+    language: string = null;
 
     @Output()
     captchaResponse:EventEmitter<string>;
@@ -32,7 +35,7 @@ export class ReCaptchaComponent implements OnInit {
         var doc = <HTMLDivElement> document.body;
         var script = document.createElement('script');
         script.innerHTML = '';
-        script.src = 'https://www.google.com/recaptcha/api.js';
+        script.src = 'https://www.google.com/recaptcha/api.js' + (this.language ? '?hl=' + this.language : '');
         script.async = true;
         script.defer = true;
         doc.appendChild(script);
