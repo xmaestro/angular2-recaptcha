@@ -20,7 +20,7 @@ export class ReCaptchaComponent implements OnInit {
     language: string = null;
 
     @Output()
-    captchaResponse:EventEmitter<string>;
+    captchaResponse: EventEmitter<string>;
 
     constructor(zone: NgZone) {
         window[<any>"verifyCallback"] = <any>((response: any) => zone.run(this.recaptchaCallback.bind(this, response)));
