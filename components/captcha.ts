@@ -14,20 +14,17 @@ import {
 export class ReCaptchaComponent implements OnInit {
 
     @Input()
-    site_key: string = null;
-    /* Available languages: https://developers.google.com/recaptcha/docs/language */
-    @Input()
-    language: string = null;
+    site_key:string = null;
 
     @Output()
-    captchaResponse: EventEmitter<string>;
+    captchaResponse:EventEmitter<string>;
 
-    constructor(private _zone: NgZone) {
-        window['verifyCallback'] = (response: any) => this._zone.run(this.recaptchaCallback.bind(this, response));
+    constructor(zone: NgZone) {
+        window[<any>"verifyCallback"] = <any>((response: any) => zone.run(this.recaptchaCallback.bind(this, response)));
         this.captchaResponse = new EventEmitter<string>();
     }
 
-    recaptchaCallback(response) {
+    recaptchaCallback(response: string) {
         this.captchaResponse.emit(response);
     }
 
@@ -35,7 +32,7 @@ export class ReCaptchaComponent implements OnInit {
         var doc = <HTMLDivElement> document.body;
         var script = document.createElement('script');
         script.innerHTML = '';
-        script.src = 'https://www.google.com/recaptcha/api.js' + (this.language ? '?hl=' + this.language : '');
+        script.src = 'https://www.google.com/recaptcha/api.js';
         script.async = true;
         script.defer = true;
         doc.appendChild(script);
