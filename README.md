@@ -14,21 +14,21 @@ npm install angular2-recaptcha
 Usage
 --------------------------------------
 
-### SystemJs config
+### SystemJS config
 
 ```js
 System.config({
-            map: {
-                'angular2-recaptcha': 'node_modules/angular2-recaptcha'
-            },
-            packages: {
-                app: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                },
-                'angular2-recaptcha': {defaultExtension: 'js'}
-            }
-        });
+    map: {
+        'angular2-recaptcha': 'node_modules/angular2-recaptcha'
+    },
+    packages: {
+        app: {
+            format: 'register',
+            defaultExtension: 'js'
+        },
+        'angular2-recaptcha': {defaultExtension: 'js'}
+    }
+});
 ```
 
 ### Component
@@ -50,15 +50,15 @@ import {ReCaptchaComponent} from 'angular2-recaptcha/angular2-recaptcha';
 Use in template like below
 
 ```html
- <re-captcha [site_key]="'<GOOGLE_RECAPTCHA_KEY>'"></re-captcha>
+ <re-captcha site_key="<GOOGLE_RECAPTCHA_KEY>"></re-captcha>
 ```
 
-Where **site_key** is the Google reCaptcha private key.
+Where **site_key** is the Google reCaptcha private key. Optionally you can also override the user interface language by by setting e.g. `language="de"`.
 
 ## Callback
 
-To catch the success callback, you will need to subscribe to `captchaValidated` event. The response token will be passed in the `$event` parameter.
+To catch the success callback, you will need to subscribe to `captchaResponse` event. The response token will be passed in the `$event` parameter.
 
 ```html
-<re-captcha (captchaValidated)="handleCorrectCaptcha($event)" [site_key]="'<GOOGLE_RECAPTCHA_KEY>'"></re-captcha>
+<re-captcha (captchaResponse)="handleCorrectCaptcha($event)" site_key="<GOOGLE_RECAPTCHA_KEY>"></re-captcha>
 ```
