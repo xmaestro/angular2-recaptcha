@@ -22,12 +22,12 @@ export class ReCaptchaComponent implements OnInit {
     @Output()
     captchaResponse: EventEmitter<string>;
 
-    constructor(private _zone: NgZone) {
-        window['verifyCallback'] = (response: any) => this._zone.run(this.recaptchaCallback.bind(this, response));
+    constructor(zone: NgZone) {
+        window[<any>"verifyCallback"] = <any>((response: any) => zone.run(this.recaptchaCallback.bind(this, response)));
         this.captchaResponse = new EventEmitter<string>();
     }
 
-    recaptchaCallback(response) {
+    recaptchaCallback(response: string) {
         this.captchaResponse.emit(response);
     }
 
