@@ -53,7 +53,7 @@ Use in template like below
  <re-captcha site_key="<GOOGLE_RECAPTCHA_KEY>"></re-captcha>
 ```
 
-Where **site_key** is the Google reCaptcha private key. Optionally you can also override the user interface language by by setting e.g. `language="de"`.
+Where **site_key** is the Google reCaptcha private key. Optionally you can also override the user interface language by setting e.g. `language="de"`.
 
 ## Callback
 
