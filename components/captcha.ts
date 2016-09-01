@@ -40,4 +40,8 @@ export class ReCaptchaComponent implements OnInit {
         script.defer = true;
         doc.appendChild(script);
     }
+    
+    public static reset() {
+        (<any>window).grecaptcha.reset();
+    }
 }
