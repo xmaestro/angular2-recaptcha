@@ -31,16 +31,18 @@ System.config({
 });
 ```
 
-### Component
+### Module
 
 ```typescript
-import {ReCaptchaComponent} from 'angular2-recaptcha/angular2-recaptcha';
+...
+import { ReCaptchaModule } from 'angular2-recaptcha/angular2-recaptcha';
+...
 ```
 
 ```typescript
  ...
-@Component({
-  directives: [ReCaptchaComponent]
+@NgModule({
+  imports: [...,ReCaptchaModule]
   })
   ...
 ```
