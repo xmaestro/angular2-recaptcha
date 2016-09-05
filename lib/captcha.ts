@@ -8,7 +8,12 @@ import {
 
 @Component({
     selector: 're-captcha',
-    template: '<div class="g-recaptcha" [attr.data-sitekey]="site_key" data-callback="verifyCallback"></div>'
+    template: `
+    <div class="g-recaptcha"
+      [attr.data-sitekey]="site_key"
+      data-callback="verifyCallback"
+      data-expired-callback="captchaExpiredCallback">
+  </div>`
 })
 
 export class ReCaptchaComponent implements OnInit {
@@ -21,14 +26,21 @@ export class ReCaptchaComponent implements OnInit {
 
     @Output()
     captchaResponse: EventEmitter<string>;
+    @Output()
+    captchaExpired: EventEmitter<>;
 
     constructor(zone: NgZone) {
         window[<any>"verifyCallback"] = <any>((response: any) => zone.run(this.recaptchaCallback.bind(this, response)));
+        window[<any>"captchaExpiredCallback"] = <any>(() => zone.run(this.recaptchaExpiredCallback.bind(this)));
         this.captchaResponse = new EventEmitter<string>();
     }
 
     recaptchaCallback(response: string) {
         this.captchaResponse.emit(response);
+    }
+    
+    recaptchaExpiredCallback() {
+        this.captchaExpired.emit();
     }
 
     ngOnInit() {
@@ -42,6 +54,7 @@ export class ReCaptchaComponent implements OnInit {
     }
 
     public static reset() {
+        //noinspection TypeScriptUnresolvedVariable
         (<any>window).grecaptcha.reset();
     }
 }
