@@ -1,2 +1,5 @@
+README.md
+tsconfig.json
+.npignore
 *.ts
 !*.d.ts

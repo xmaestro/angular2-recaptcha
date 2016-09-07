@@ -2,11 +2,11 @@
   "compilerOptions": {
     "target": "ES5",
     "experimentalDecorators": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "declaration": true
   },
   "files": [
-    "angular2-recaptcha.ts",
-    "typings/index.d.ts"
+    "angular2-recaptcha.ts"
   ]
 }
-
