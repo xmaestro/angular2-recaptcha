@@ -30,6 +30,8 @@ export class ReCaptchaComponent implements OnInit {
     captchaExpired = new EventEmitter();
 
     constructor(zone: NgZone) {
+        /* if DI doesn't work, use this to create the zone object */
+        //let zone = new NgZone({});
         window[<any>"verifyCallback"] = <any>((response: any) => zone.run(this.recaptchaCallback.bind(this, response)));
         window[<any>"captchaExpiredCallback"] = <any>(() => zone.run(this.recaptchaExpiredCallback.bind(this)));
     }
