@@ -1,9 +1,9 @@
-import { OnInit, NgZone } from '@angular/core';
+import { OnInit, EventEmitter, NgZone } from '@angular/core';
 export declare class ReCaptchaComponent implements OnInit {
     site_key: string;
     language: string;
-    captchaResponse: any;
-    captchaExpired: any;
+    captchaResponse: EventEmitter<string>;
+    captchaExpired: EventEmitter<{}>;
     constructor(zone: NgZone);
     recaptchaCallback(response: string): void;
     recaptchaExpiredCallback(): void;
