@@ -1,5 +1,5 @@
 README.md
 tsconfig.json
-.npignore
+.npmignore
 *.ts
 !*.d.ts
