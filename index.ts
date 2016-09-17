@@ -1,1 +1,1 @@
-export * from '.angular2-recaptcha';
+export * from './angular2-recaptcha';
