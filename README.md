@@ -35,7 +35,7 @@ System.config({
 
 ```typescript
 ...
-import { ReCaptchaModule } from 'angular2-recaptcha/angular2-recaptcha';
+import { ReCaptchaModule } from 'angular2-recaptcha';
 ...
 ```
 
@@ -63,4 +63,11 @@ To catch the success callback, you will need to subscribe to `captchaResponse` e
 
 ```html
 <re-captcha (captchaResponse)="handleCorrectCaptcha($event)" site_key="<GOOGLE_RECAPTCHA_KEY>"></re-captcha>
+```
+
+The event `captchaExpired` is triggered when the displayed image has expired. It does not have any event parameters.
+
+You can request a new captcha to be displayed:
+```typescript
+ReCaptchaComponent::reset();
 ```
