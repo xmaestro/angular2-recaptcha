@@ -3,3 +3,4 @@ tsconfig.json
 .npmignore
 *.ts
 !*.d.ts
+factories

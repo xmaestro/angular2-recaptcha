@@ -4,9 +4,13 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
-    "declaration": true
+    "declaration": true,
+    "lib": ["es6", "dom"]
   },
   "files": [
     "index.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "genDir": "factories"
+  }
 }
