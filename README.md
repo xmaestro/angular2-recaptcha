@@ -26,7 +26,7 @@ System.config({
             format: 'register',
             defaultExtension: 'js'
         },
-        'angular2-recaptcha': {defaultExtension: 'js'}
+        'angular2-recaptcha': {defaultExtension: 'js', main:'index'}
     }
 });
 ```
