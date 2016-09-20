@@ -1,7 +1,10 @@
 node_modules
 typings
+factories
 
 # misc
 *.log
 .idea
+*.d.ts
+*.js
 
