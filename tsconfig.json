@@ -7,6 +7,6 @@
     "declaration": true
   },
   "files": [
-    "angular2-recaptcha.ts"
+    "index.ts"
   ]
 }
