@@ -9,14 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var captcha_1 = require("./lib/captcha");
+var captcha_component_1 = require("./lib/captcha.component");
+var captcha_service_1 = require("./lib/captcha.service");
 var ReCaptchaModule = (function () {
     function ReCaptchaModule() {
     }
     ReCaptchaModule = __decorate([
         core_1.NgModule({
-            declarations: [captcha_1.ReCaptchaComponent],
-            exports: [captcha_1.ReCaptchaComponent]
+            declarations: [captcha_component_1.ReCaptchaComponent],
+            exports: [captcha_component_1.ReCaptchaComponent],
+            providers: [captcha_service_1.ReCaptchaService]
         }), 
         __metadata('design:paramtypes', [])
     ], ReCaptchaModule);
