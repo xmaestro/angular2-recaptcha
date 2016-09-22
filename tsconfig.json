@@ -1,20 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "es5",
+    "module": "commonjs",
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
-    "declaration": true
+    "declaration": true,
+    "lib": ["es6", "dom"]
   },
-  "typeRoots": [
-    "./node_modules/@types",
-    "./node_modules"
-  ],
-  "types": [
-    "core-js",
-    "node"
-  ],
   "files": [
     "index.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "genDir": "factories"
+  }
 }
