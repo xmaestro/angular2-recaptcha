@@ -55,7 +55,14 @@ Use in template like below
  <re-captcha site_key="<GOOGLE_RECAPTCHA_KEY>"></re-captcha>
 ```
 
-Where **site_key** is the Google reCaptcha private key. Optionally you can also override the user interface language by setting e.g. `language="de"`.
+Where **site_key** is the Google reCaptcha private key. Optional parameters as follows:
+ * **language** One of the ISO language values supported by Google: https://developers.google.com/recaptcha/docs/language Note that due to the design of the reCaptcha API, only the first component on a page can change the language from default English.
+ * **theme** Either `light` (default) or `dark`.
+ * **type** Either `image` (default) or `audio`.
+ * **size** Either `normal` (default) or `compact`.
+ * **tabindex** Tabindex for navigation, default 0.
+   
+   
 
 ## Callback
 
@@ -67,7 +74,14 @@ To catch the success callback, you will need to subscribe to `captchaResponse` e
 
 The event `captchaExpired` is triggered when the displayed image has expired. It does not have any event parameters.
 
+## Methods
+
 You can request a new captcha to be displayed:
 ```typescript
-ReCaptchaComponent::reset();
+component.reset();
+```
+
+The previous response can be retrieved:
+```typescript
+let token = component.getResponse();
 ```
