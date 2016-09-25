@@ -1,0 +1,16 @@
+language: node_js:
+node_js:
+  - 4
+  - 5
+  - 6
+  - stable
+
+os:
+  - linux
+  - osx
+
+script: npm run prepublish
+
+cache:
+  directories: node_modules
+
