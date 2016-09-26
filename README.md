@@ -1,3 +1,5 @@
+![Travis](https://travis-ci.org/xmaestro/angular2-recaptcha.svg?branch=master)
+
 # Angular 2 : Typescript component for Google reCaptcha 2
 
 This is just very simple Angular 2 component that implements Google [reCaptcha 2](https://www.google.com/recaptcha/intro/index.html).
