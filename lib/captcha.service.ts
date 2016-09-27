@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from "@angular/core";
-import { Observable, BehaviorSubject } from "rxjs";
+import { Observable, BehaviorSubject } from "rxjs/Rx";
 
 /*
  * Common service shared by all reCaptcha component instances
