@@ -62,7 +62,7 @@ export class ReCaptchaComponent implements OnInit {
     }
 
     public reset() {
-        if (!this.widgetId)
+        if (this.widgetId === null)
             return;
         //noinspection TypeScriptUnresolvedVariable
         (<any>window).grecaptcha.reset(this.widgetId);
