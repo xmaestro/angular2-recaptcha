@@ -97,10 +97,10 @@ export class RegisterComponent implements OnInit {
 ### Usage
 You can request a new captcha to be displayed:
 ```typescript
-captcha.reset();
+this.captcha.reset();
 ```
 
 The previous response can be retrieved:
 ```typescript
-let token = captcha.getResponse();
+let token = this.captcha.getResponse();
 ```
