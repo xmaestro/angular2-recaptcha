@@ -72,7 +72,7 @@ export class ReCaptchaComponent implements OnInit {
         if (this.widgetId === null)
             return null;
         //noinspection TypeScriptUnresolvedVariable
-        return (<any>window).grecaptcha.getResponse(this.targetRef.nativeElement);
+        return (<any>window).grecaptcha.getResponse(this.widgetId);
     }
 
     private recaptchaCallback(response: string) {

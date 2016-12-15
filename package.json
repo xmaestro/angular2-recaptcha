@@ -1,6 +1,6 @@
 {
   "name": "angular2-recaptcha",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Angular 2 : Typescript component for Google reCaptcha",
   "main": "angular2-recaptcha.js",
   "scripts": {
