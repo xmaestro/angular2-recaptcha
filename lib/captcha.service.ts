@@ -1,6 +1,6 @@
-import { Injectable, NgZone } from "@angular/core";
-import { Observable } from "rxjs/Observable";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { Injectable, NgZone } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 /*
  * Common service shared by all reCaptcha component instances
@@ -25,6 +25,11 @@ export class ReCaptchaService {
     public getReady(language: String): Observable<boolean> {
         if (!this.scriptLoaded) {
             this.scriptLoaded = true;
+            /* it could already been loaded elsewhere, e.g. another lazily loaded module */
+            if (window.hasOwnProperty('grecaptcha')) {
+                this.readySubject.next(true);
+                return this.readySubject.asObservable();
+            }
             let doc = <HTMLDivElement>document.body;
             let script = document.createElement('script');
             script.innerHTML = '';
