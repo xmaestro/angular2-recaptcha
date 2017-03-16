@@ -62,17 +62,17 @@ export class ReCaptchaComponent implements OnInit {
     }
 
     public reset() {
-        if (!this.widgetId)
+        if (this.widgetId === null)
             return;
         //noinspection TypeScriptUnresolvedVariable
         (<any>window).grecaptcha.reset(this.widgetId);
     }
 
     public getResponse(): String {
-        if (!this.widgetId)
+        if (this.widgetId === null)
             return null;
         //noinspection TypeScriptUnresolvedVariable
-        return (<any>window).grecaptcha.getResponse(this.targetRef.nativeElement);
+        return (<any>window).grecaptcha.getResponse(this.widgetId);
     }
 
     private recaptchaCallback(response: string) {

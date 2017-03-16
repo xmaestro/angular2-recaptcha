@@ -1,6 +1,7 @@
 README.md
 tsconfig.json
 .npmignore
+.idea
 *.ts
 !*.d.ts
 factories

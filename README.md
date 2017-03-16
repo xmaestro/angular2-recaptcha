@@ -63,8 +63,8 @@ Where **site_key** is the Google reCaptcha private key. Optional parameters as f
  * **type** Either `image` (default) or `audio`.
  * **size** Either `normal` (default) or `compact`.
  * **tabindex** Tabindex for navigation, default 0.
-   
-   
+
+
 
 ## Callback
 
@@ -78,12 +78,29 @@ The event `captchaExpired` is triggered when the displayed image has expired. It
 
 ## Methods
 
+Right now the only clean way to access the methods is using [@ViewChild](https://angular.io/docs/ts/latest/api/core/index/ViewChild-decorator.html). If you know a better way, please create a PR.
+
+### Import
+```typescript
+...
+import {..., ViewChild} from '@angular/core';
+import {ReCaptchaComponent} from 'angular2-recaptcha/lib/captcha.component';
+...
+
+export class RegisterComponent implements OnInit {
+  ...
+  @ViewChild(ReCaptchaComponent) captcha:ReCaptchaComponent;
+  ...
+}
+```
+
+### Usage
 You can request a new captcha to be displayed:
 ```typescript
-component.reset();
+this.captcha.reset();
 ```
 
 The previous response can be retrieved:
 ```typescript
-let token = component.getResponse();
+let token = this.captcha.getResponse();
 ```
