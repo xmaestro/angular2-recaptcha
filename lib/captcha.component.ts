@@ -15,24 +15,16 @@ import { ReCaptchaService } from './captcha.service';
 })
 export class ReCaptchaComponent implements OnInit {
 
-    @Input()
-    site_key: string = null;
-    @Input()
-    theme = 'light';
-    @Input()
-    type = 'image';
-    @Input()
-    size = 'normal';
-    @Input()
-    tabindex = 0;
+    @Input() site_key: string = null;
+    @Input() theme = 'light';
+    @Input() type = 'image';
+    @Input() size = 'normal';
+    @Input() tabindex = 0;
     /* Available languages: https://developers.google.com/recaptcha/docs/language */
-    @Input()
-    language: string = null;
+    @Input() language: string = null;
 
-    @Output()
-    captchaResponse = new EventEmitter<string>();
-    @Output()
-    captchaExpired = new EventEmitter();
+    @Output() captchaResponse = new EventEmitter<string>();
+    @Output() captchaExpired = new EventEmitter();
 
     @ViewChild('target') targetRef: ElementRef;
     widgetId: any = null;

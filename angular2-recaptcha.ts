@@ -4,7 +4,11 @@ import { ReCaptchaService } from "./lib/captcha.service";
 
 @NgModule({
     declarations: [ReCaptchaComponent],
-    exports: [ReCaptchaComponent],
-    providers: [ReCaptchaService]
+    exports: [ReCaptchaComponent]
 })
 export class ReCaptchaModule {}
+
+@NgModule({
+    providers: [ReCaptchaService]
+})
+export class ReCaptchaServiceModule {}

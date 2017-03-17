@@ -5,7 +5,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 /*
  * Common service shared by all reCaptcha component instances
  * through dependency injection.
- * This service has the task of loading the reCaptcha API once for all
+ * This service has the task of loading the reCaptcha API once for all.
+ * It should be imported by the root (app) module.
  *
  * As the language is passed to the <script>, the first component
  * determines the language of all subsequent components. This is a limitation
@@ -25,11 +26,6 @@ export class ReCaptchaService {
     public getReady(language: String): Observable<boolean> {
         if (!this.scriptLoaded) {
             this.scriptLoaded = true;
-            /* it could already been loaded elsewhere, e.g. another lazily loaded module */
-            if (window.hasOwnProperty('grecaptcha')) {
-                this.readySubject.next(true);
-                return this.readySubject.asObservable();
-            }
             let doc = <HTMLDivElement>document.body;
             let script = document.createElement('script');
             script.innerHTML = '';
