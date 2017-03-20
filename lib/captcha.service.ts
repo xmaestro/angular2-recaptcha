@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, Optional, SkipSelf } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
@@ -42,3 +42,14 @@ export class ReCaptchaService {
         this.readySubject.next(true);
     }
 }
+
+/* singleton pattern taken from https://github.com/angular/angular/issues/13854 */
+export function RECAPTCHA_SERVICE_PROVIDER_FACTORY(ngZone: NgZone, parentDispatcher: ReCaptchaService) {
+    return parentDispatcher || new ReCaptchaService(ngZone);
+}
+
+export const RECAPTCHA_SERVICE_PROVIDER = {
+    provide: ReCaptchaService,
+    deps: [NgZone, [new Optional(), new SkipSelf(), ReCaptchaService]],
+    useFactory: RECAPTCHA_SERVICE_PROVIDER_FACTORY
+};
