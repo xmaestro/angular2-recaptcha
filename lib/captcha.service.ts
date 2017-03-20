@@ -6,7 +6,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
  * Common service shared by all reCaptcha component instances
  * through dependency injection.
  * This service has the task of loading the reCaptcha API once for all.
- * It should be imported by the root (app) module.
+ * Only the first instance of the component creates the service, subsequent
+ * components will use the existing instance.
  *
  * As the language is passed to the <script>, the first component
  * determines the language of all subsequent components. This is a limitation
