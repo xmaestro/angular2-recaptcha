@@ -1,6 +1,6 @@
 ![Travis](https://travis-ci.org/xmaestro/angular2-recaptcha.svg?branch=master)
 
-# Angular 2 : Typescript component for Google reCaptcha 2
+# Angular 2 : TypeScript component for Google reCaptcha 2
 
 This is just very simple Angular 2 component that implements Google [reCaptcha 2](https://www.google.com/recaptcha/intro/index.html).
 
@@ -61,14 +61,13 @@ Where **site_key** is the Google reCaptcha private key. Optional parameters as f
  * **language** One of the ISO language values supported by Google: https://developers.google.com/recaptcha/docs/language Note that due to the design of the reCaptcha API, only the first component on a page can change the language from default English.
  * **theme** Either `light` (default) or `dark`.
  * **type** Either `image` (default) or `audio`.
- * **size** Either `normal` (default) or `compact`.
+ * **size** Either `normal` (default), `compact` or `invisible`.
  * **tabindex** Tabindex for navigation, default 0.
-
 
 
 ## Callback
 
-To catch the success callback, you will need to subscribe to `captchaResponse` event. The response token will be passed in the `$event` parameter.
+To catch the success callback, you will need to subscribe to the `captchaResponse` event. The response token will be passed in the `$event` parameter.
 
 ```html
 <re-captcha (captchaResponse)="handleCorrectCaptcha($event)" site_key="<GOOGLE_RECAPTCHA_KEY>"></re-captcha>
@@ -78,19 +77,15 @@ The event `captchaExpired` is triggered when the displayed image has expired. It
 
 ## Methods
 
-Right now the only clean way to access the methods is using [@ViewChild](https://angular.io/docs/ts/latest/api/core/index/ViewChild-decorator.html). If you know a better way, please create a PR.
+To access the methods, use [@ViewChild](https://angular.io/docs/ts/latest/api/core/index/ViewChild-decorator.html).
 
 ### Import
 ```typescript
-...
-import {..., ViewChild} from '@angular/core';
-import {ReCaptchaComponent} from 'angular2-recaptcha/lib/captcha.component';
-...
+import { ViewChild } from '@angular/core';
+import { ReCaptchaComponent } from 'angular2-recaptcha';
 
-export class RegisterComponent implements OnInit {
-  ...
-  @ViewChild(ReCaptchaComponent) captcha:ReCaptchaComponent;
-  ...
+export class RegisterComponent {
+  @ViewChild(ReCaptchaComponent) captcha: ReCaptchaComponent;
 }
 ```
 

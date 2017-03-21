@@ -7,40 +7,32 @@ import {
     NgZone,
     ViewChild, ElementRef
 } from '@angular/core';
-import { ReCaptchaService } from "./captcha.service";
+import { ReCaptchaService } from './captcha.service';
 
 @Component({
     selector: 're-captcha',
     template: '<div #target></div>'
 })
-
 export class ReCaptchaComponent implements OnInit {
 
-    @Input()
-    site_key: string = null;
-    @Input()
-    theme = 'light';
-    @Input()
-    type = 'image';
-    @Input()
-    size = 'normal';
-    @Input()
-    tabindex = 0;
+    @Input() site_key: string = null;
+    @Input() theme = 'light';
+    @Input() type = 'image';
+    @Input() size = 'normal';
+    @Input() tabindex = 0;
     /* Available languages: https://developers.google.com/recaptcha/docs/language */
-    @Input()
-    language: string = null;
+    @Input() language: string = null;
 
-    @Output()
-    captchaResponse = new EventEmitter<string>();
-    @Output()
-    captchaExpired = new EventEmitter();
+    @Output() captchaResponse = new EventEmitter<string>();
+    @Output() captchaExpired = new EventEmitter();
 
     @ViewChild('target') targetRef: ElementRef;
     widgetId: any = null;
 
     constructor(
         private _zone: NgZone,
-        private _captchaService: ReCaptchaService) {
+        private _captchaService: ReCaptchaService
+    ) {
     }
 
     ngOnInit() {
@@ -48,7 +40,7 @@ export class ReCaptchaComponent implements OnInit {
             .subscribe((ready) => {
                 if (!ready)
                     return;
-                //noinspection TypeScriptUnresolvedVariable,TypeScriptUnresolvedFunction
+                // noinspection TypeScriptUnresolvedVariable,TypeScriptUnresolvedFunction
                 this.widgetId = (<any>window).grecaptcha.render(this.targetRef.nativeElement, {
                     'sitekey': this.site_key,
                     'theme': this.theme,
@@ -61,17 +53,18 @@ export class ReCaptchaComponent implements OnInit {
             });
     }
 
+    // noinspection JSUnusedGlobalSymbols
     public reset() {
         if (this.widgetId === null)
             return;
-        //noinspection TypeScriptUnresolvedVariable
+        // noinspection TypeScriptUnresolvedVariable
         (<any>window).grecaptcha.reset(this.widgetId);
     }
 
     public getResponse(): String {
         if (this.widgetId === null)
             return null;
-        //noinspection TypeScriptUnresolvedVariable
+        // noinspection TypeScriptUnresolvedVariable
         return (<any>window).grecaptcha.getResponse(this.widgetId);
     }
 
