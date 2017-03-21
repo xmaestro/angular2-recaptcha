@@ -5,15 +5,23 @@ import {
     Output,
     EventEmitter,
     NgZone,
-    ViewChild, ElementRef
+    ViewChild, ElementRef, forwardRef
 } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { ReCaptchaService } from './captcha.service';
 
 @Component({
     selector: 're-captcha',
-    template: '<div #target></div>'
+    template: '<div #target></div>',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => ReCaptchaComponent),
+            multi: true
+        }
+    ]
 })
-export class ReCaptchaComponent implements OnInit {
+export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
 
     @Input() site_key: string = null;
     @Input() theme = 'light';
@@ -28,6 +36,9 @@ export class ReCaptchaComponent implements OnInit {
 
     @ViewChild('target') targetRef: ElementRef;
     widgetId: any = null;
+
+    onChange: Function = () => {};
+    onTouched: Function = () => {};
 
     constructor(
         private _zone: NgZone,
@@ -68,11 +79,27 @@ export class ReCaptchaComponent implements OnInit {
         return (<any>window).grecaptcha.getResponse(this.widgetId);
     }
 
+    writeValue(newValue: any): void {
+        /* ignore it */
+    }
+
+    registerOnChange(fn: any): void {
+        this.onChange = fn;
+    }
+
+    registerOnTouched(fn: any): void {
+        this.onTouched = fn;
+    }
+
     private recaptchaCallback(response: string) {
+        this.onChange(response);
+        this.onTouched();
         this.captchaResponse.emit(response);
     }
 
     private recaptchaExpiredCallback() {
+        this.onChange(null);
+        this.onTouched();
         this.captchaExpired.emit();
     }
 }
