@@ -8,3 +8,5 @@ import { RECAPTCHA_SERVICE_PROVIDER } from "./lib/captcha.service";
     providers: [RECAPTCHA_SERVICE_PROVIDER]
 })
 export class ReCaptchaModule {}
+
+export * from './lib/captcha.component';
