@@ -70,6 +70,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
             return;
         // noinspection TypeScriptUnresolvedVariable
         (<any>window).grecaptcha.reset(this.widgetId);
+        this.onChange(null);
     }
 
     public getResponse(): String {
