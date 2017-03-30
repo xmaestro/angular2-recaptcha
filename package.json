@@ -35,7 +35,6 @@
     "typescript": "^2.1.4"
   },
   "peerDependencies": {
-    "@angular/core": "^2.4.1"
   },
   "homepage": "https://github.com/xmaestro/angular2-recaptcha#readme"
 }
