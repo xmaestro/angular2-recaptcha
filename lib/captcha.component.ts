@@ -28,6 +28,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
     @Input() type = 'image';
     @Input() size = 'normal';
     @Input() tabindex = 0;
+    @Input() badge = 'bottomright';
     /* Available languages: https://developers.google.com/recaptcha/docs/language */
     @Input() language: string = null;
 
@@ -54,6 +55,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
                 // noinspection TypeScriptUnresolvedVariable,TypeScriptUnresolvedFunction
                 this.widgetId = (<any>window).grecaptcha.render(this.targetRef.nativeElement, {
                     'sitekey': this.site_key,
+                    'badge': this.badge,
                     'theme': this.theme,
                     'type': this.type,
                     'size': this.size,
