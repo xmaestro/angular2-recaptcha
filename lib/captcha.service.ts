@@ -24,7 +24,7 @@ export class ReCaptchaService {
         window[<any>"reCaptchaOnloadCallback"] = <any>(() => zone.run(this.onloadCallback.bind(this)));
     }
 
-    public getReady(language: String): Observable<boolean> {
+    public getReady(language: string): Observable<boolean> {
         if (!this.scriptLoaded) {
             this.scriptLoaded = true;
             let doc = <HTMLDivElement>document.body;
