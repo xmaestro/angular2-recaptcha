@@ -21,7 +21,9 @@ export class ReCaptchaService {
 
     constructor(zone: NgZone) {
         /* the callback needs to exist before the API is loaded */
-        window[<any>"reCaptchaOnloadCallback"] = <any>(() => zone.run(this.onloadCallback.bind(this)));
+		if (typeof window != 'undefined') {
+			window[<any>"reCaptchaOnloadCallback"] = <any>(() => zone.run(this.onloadCallback.bind(this)));
+		}
     }
 
     public getReady(language: string): Observable<boolean> {
