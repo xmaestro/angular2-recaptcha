@@ -90,7 +90,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
         return (<any>window).grecaptcha.getResponse(this.widgetId);
     }
 
-    writeValue(newValue: any): void {
+    writeValue(_newValue: any): void {
         /* ignore it */
     }
 

@@ -1,6 +1,6 @@
 import { Injectable, NgZone, Optional, SkipSelf } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 /*
  * Common service shared by all reCaptcha component instances
