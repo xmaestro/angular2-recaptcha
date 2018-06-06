@@ -1,12 +1,12 @@
 {
   "name": "angular2-recaptcha",
-  "version": "0.6.0",
-  "description": "Angular 2 : Typescript component for Google reCaptcha",
+  "version": "1.0.0",
+  "description": "Angular 6 component for Google reCaptcha",
   "main": "angular2-recaptcha.js",
   "scripts": {
     "dev": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "./node_modules/.bin/ngc"
+    "prepare": "./node_modules/.bin/ngc"
   },
   "repository": {
     "type": "git",
@@ -22,19 +22,19 @@
     "url": "https://github.com/xmaestro/angular2-recaptcha/issues"
   },
   "devDependencies": {
-    "@angular/animations": "6.0.3",
-    "@angular/common": "6.0.3",
-    "@angular/compiler": "6.0.3",
-    "@angular/compiler-cli": "6.0.3",
-    "@angular/core": "6.0.3",
-    "@angular/forms": "6.0.3",
-    "@angular/platform-browser": "6.0.3",
-    "@angular/platform-browser-dynamic": "6.0.3",
-    "@angular/platform-server": "6.0.3",
-    "@types/node": "^10.1.2",
-    "rxjs": "6.2.0",
-    "typescript": "2.7.2",
-    "zone.js": "0.8.26"
+    "@angular/animations": "^6.0.3",
+    "@angular/common": "^6.0.3",
+    "@angular/compiler": "^6.0.3",
+    "@angular/compiler-cli": "^6.0.3",
+    "@angular/core": "^6.0.3",
+    "@angular/forms": "^6.0.3",
+    "@angular/platform-browser": "^6.0.3",
+    "@angular/platform-browser-dynamic": "^6.0.3",
+    "@angular/platform-server": "^6.0.3",
+    "@types/node": "^6.0.112",
+    "rxjs": "^6.2.0",
+    "typescript": "^2.7.2",
+    "zone.js": "^0.8.26"
   },
   "homepage": "https://github.com/xmaestro/angular2-recaptcha#readme"
 }
