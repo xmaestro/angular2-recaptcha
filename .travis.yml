@@ -5,7 +5,7 @@ node_js:
 os:
   - linux
 
-script: npm run prepublish
+script: npm run prepare
 
 cache:
   directories: node_modules
