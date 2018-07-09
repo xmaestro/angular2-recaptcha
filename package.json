@@ -33,7 +33,7 @@
     "@angular/platform-server": "^6.0.3",
     "@types/node": "^6.0.112",
     "rxjs": "^6.2.0",
-    "typescript": "^2.7.2",
+    "typescript": "~2.7.2",
     "zone.js": "^0.8.26"
   },
   "homepage": "https://github.com/xmaestro/angular2-recaptcha#readme"
