@@ -71,7 +71,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
         if (this.widgetId === null)
             return;
         // noinspection TypeScriptUnresolvedVariable
-        (<any>window).grecaptcha.reset(this.widgetId);
+        this._zone.runOutsideAngular((<any>window).grecaptcha.reset.bind(this.widgetId));
         this.onChange(null);
     }
 

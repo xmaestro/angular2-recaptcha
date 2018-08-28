@@ -21,7 +21,7 @@ export class ReCaptchaService {
     constructor(zone: NgZone) {
         /* the callback needs to exist before the API is loaded */
 		if (typeof window != 'undefined') {
-			window[<any>"reCaptchaOnloadCallback"] = <any>(() => zone.run(this.onloadCallback.bind(this)));
+			window[<any>"reCaptchaOnloadCallback"] = <any>(() => zone.runOutsideAngular(this.onloadCallback.bind(this)));
 		}
     }
 
