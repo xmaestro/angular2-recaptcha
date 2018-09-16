@@ -63,6 +63,7 @@ Where **site_key** is the Google reCaptcha public key. Optional parameters as fo
  * **type** Either `image` (default) or `audio`.
  * **size** Either `normal` (default), `compact` or `invisible`.
  * **tabindex** Tabindex for navigation, default 0.
+ * **global** If true, the reCaptcha script will be loaded from www.recaptcha.net instead of www.google.com
 
 
 ## Callback

@@ -31,6 +31,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
     @Input() badge = 'bottomright';
     /* Available languages: https://developers.google.com/recaptcha/docs/language */
     @Input() language: string = null;
+    @Input() global: boolean = false;
 
     @Output() captchaResponse = new EventEmitter<string>();
     @Output() captchaExpired = new EventEmitter();
@@ -48,7 +49,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
     }
 
     ngOnInit() {
-        this._captchaService.getReady(this.language)
+        this._captchaService.getReady(this.language, this.global)
             .subscribe((ready) => {
                 if (!ready)
                     return;

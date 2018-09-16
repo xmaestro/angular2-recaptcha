@@ -25,13 +25,14 @@ export class ReCaptchaService {
 		}
     }
 
-    public getReady(language: string): Observable<boolean> {
+    public getReady(language: string, global: boolean): Observable<boolean> {
         if (!this.scriptLoaded) {
+            const scriptUrl = !!global ? 'www.recaptcha.net' : 'www.google.com';
             this.scriptLoaded = true;
             let doc = <HTMLDivElement>document.body;
             let script = document.createElement('script');
             script.innerHTML = '';
-            script.src = 'https://www.google.com/recaptcha/api.js?onload=reCaptchaOnloadCallback&render=explicit' +
+            script.src = `https://${scriptUrl}/recaptcha/api.js?onload=reCaptchaOnloadCallback&render=explicit` +
                 (language ? '&hl=' + language : '');
             script.async = true;
             script.defer = true;
