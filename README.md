@@ -69,9 +69,10 @@ Where **site_key** is the Google reCaptcha public key. Optional parameters as fo
 ## Callback
 
 To catch the success callback, you will need to subscribe to the `captchaResponse` event. The response token will be passed in the `$event` parameter.
+To wait for component be loaded subscribe to `loaded` event.
 
 ```html
-<re-captcha (captchaResponse)="handleCorrectCaptcha($event)" site_key="<GOOGLE_RECAPTCHA_KEY>"></re-captcha>
+<re-captcha (captchaResponse)="handleCorrectCaptcha($event)" (loaded)="sendCaptchaExecuteHere()" site_key="<GOOGLE_RECAPTCHA_KEY>"></re-captcha>
 ```
 
 The event `captchaExpired` is triggered when the displayed image has expired. It does not have any event parameters.
