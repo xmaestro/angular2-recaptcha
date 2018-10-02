@@ -65,7 +65,9 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
                     'callback': <any>((response: any) => this._zone.run(this.recaptchaCallback.bind(this, response))),
                     'expired-callback': <any>(() => this._zone.run(this.recaptchaExpiredCallback.bind(this)))
                 });
-                this.loaded.emit(true);
+                setTimeout(() => {
+                    this.loaded.emit(true);                
+                }, 0);
             });
     }
 
