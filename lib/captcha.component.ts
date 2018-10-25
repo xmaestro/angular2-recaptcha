@@ -35,6 +35,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
 
     @Output() captchaResponse = new EventEmitter<string>();
     @Output() captchaExpired = new EventEmitter();
+    @Output() loaded = new EventEmitter<boolean>();
 
     @ViewChild('target') targetRef: ElementRef;
     widgetId: any = null;
@@ -64,6 +65,9 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
                     'callback': <any>((response: any) => this._zone.run(this.recaptchaCallback.bind(this, response))),
                     'expired-callback': <any>(() => this._zone.run(this.recaptchaExpiredCallback.bind(this)))
                 });
+                setTimeout(() => {
+                    this.loaded.emit(true);                
+                }, 0);
             });
     }
 

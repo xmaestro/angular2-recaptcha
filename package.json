@@ -1,6 +1,6 @@
 {
   "name": "angular2-recaptcha",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Angular 6 component for Google reCaptcha",
   "main": "angular2-recaptcha.js",
   "scripts": {
