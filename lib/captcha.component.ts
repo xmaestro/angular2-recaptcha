@@ -5,7 +5,8 @@ import {
     Output,
     EventEmitter,
     NgZone,
-    ViewChild, ElementRef, forwardRef
+    ViewChild, ElementRef, forwardRef,
+    AfterViewInit
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { ReCaptchaService } from './captcha.service';
@@ -21,7 +22,7 @@ import { ReCaptchaService } from './captcha.service';
         }
     ]
 })
-export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
+export class ReCaptchaComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
     @Input() site_key: string = null;
     @Input() theme = 'light';
@@ -50,26 +51,29 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
     }
 
     ngOnInit() {
-        this._captchaService.getReady(this.language, this.global)
-            .subscribe((ready) => {
-                if (!ready)
-                    return;
-                // noinspection TypeScriptUnresolvedVariable,TypeScriptUnresolvedFunction
-                this.widgetId = (<any>window).grecaptcha.render(this.targetRef.nativeElement, {
-                    'sitekey': this.site_key,
-                    'badge': this.badge,
-                    'theme': this.theme,
-                    'type': this.type,
-                    'size': this.size,
-                    'tabindex': this.tabindex,
-                    'callback': <any>((response: any) => this._zone.run(this.recaptchaCallback.bind(this, response))),
-                    'expired-callback': <any>(() => this._zone.run(this.recaptchaExpiredCallback.bind(this)))
-                });
-                setTimeout(() => {
-                    this.loaded.emit(true);                
-                }, 0);
-            });
     }
+
+    ngAfterViewInit(): void {
+        this._captchaService.getReady(this.language, this.global)
+        .subscribe((ready) => {
+            if (!ready)
+                return;
+            // noinspection TypeScriptUnresolvedVariable,TypeScriptUnresolvedFunction
+            this.widgetId = (<any>window).grecaptcha.render(this.targetRef.nativeElement, {
+                'sitekey': this.site_key,
+                'badge': this.badge,
+                'theme': this.theme,
+                'type': this.type,
+                'size': this.size,
+                'tabindex': this.tabindex,
+                'callback': <any>((response: any) => this._zone.run(this.recaptchaCallback.bind(this, response))),
+                'expired-callback': <any>(() => this._zone.run(this.recaptchaExpiredCallback.bind(this)))
+            });
+            setTimeout(() => {
+                this.loaded.emit(true);
+            }, 0);
+        });
+      }
 
     // noinspection JSUnusedGlobalSymbols
     public reset() {
