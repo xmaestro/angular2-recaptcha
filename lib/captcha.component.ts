@@ -50,7 +50,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
     }
 
     ngOnInit() {
-        this._captchaService.getReady(this.language, this.global)
+        this._captchaService.getReady(this.language, this.global, this.scriptUrl)
             .subscribe((ready) => {
                 if (!ready)
                     return;
