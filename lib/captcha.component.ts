@@ -32,7 +32,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
     /* Available languages: https://developers.google.com/recaptcha/docs/language */
     @Input() language: string = null;
     @Input() global: boolean = false;
-    @Input() scriptUrl: string = 'www.recaptcha.net'
+    @Input() scriptUrl: string = 'www.google.com'
     @Output() captchaResponse = new EventEmitter<string>();
     @Output() captchaExpired = new EventEmitter();
     @Output() loaded = new EventEmitter<boolean>();

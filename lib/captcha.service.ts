@@ -27,6 +27,9 @@ export class ReCaptchaService {
 
     public getReady(language: string, global: boolean, scriptUrl: string): Observable<boolean> {
         if (!this.scriptLoaded) {
+            if (global == true){
+                scriptUrl = 'www.recaptcha.net'
+            }
             this.scriptLoaded = true;
             let doc = <HTMLDivElement>document.body;
             let script = document.createElement('script');
